@@ -207,6 +207,11 @@ main(int argc, char **argv)
 	if ((!update && !syncf) && (argc == optind))
 		usage(true);
 
+	if (syncf && drun) {
+		printf("Can't use dry-run mode with 'xbps-install -S', please run `xbps-install -M`\n");
+		exit(EXIT_FAILURE);
+	}
+
 	/*
 	 * Initialize libxbps.
 	 */
